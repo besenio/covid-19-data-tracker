@@ -1,4 +1,3 @@
-import { responsiveFontSizes } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
@@ -9,7 +8,7 @@ function Graph() {
       fetch('https://disease.sh/v3/covid-19/historical/aa?lastdays=120')
          .then(response => response.json())
          .then(data => {
-            
+
          })
    }, [])
 
