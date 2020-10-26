@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FormControl, Select, MenuItem } from '@material-ui/core';
+import StatsCard from './components/StatsCard';
 import './App.css';
 
 function App() {
@@ -40,6 +41,12 @@ function App() {
               ))}
           </Select>
         </FormControl>
+      </div>
+
+      <div className="app-stats">
+        <StatsCard title="Coronavirus Cases" cases={2000} total={2000}/>
+        <StatsCard title="Recovered" cases={2000} total={2000}/>
+        <StatsCard title="Deaths" cases={2000} total={2000}/>
       </div>
     </div>
   );
