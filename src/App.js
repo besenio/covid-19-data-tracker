@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FormControl, Select, MenuItem } from '@material-ui/core';
 import StatsCard from './components/StatsCard';
+import Map from './components/Map';
 import './App.css';
 
 function App() {
@@ -47,6 +48,10 @@ function App() {
         <StatsCard title="Coronavirus Cases" cases={2000} total={2000}/>
         <StatsCard title="Recovered" cases={2000} total={2000}/>
         <StatsCard title="Deaths" cases={2000} total={2000}/>
+      </div>
+
+      <div className="app-map">
+        <Map />
       </div>
     </div>
   );
