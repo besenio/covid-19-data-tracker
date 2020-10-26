@@ -2,12 +2,22 @@ import React, { useState, useEffect } from 'react'
 import { FormControl, Select, MenuItem, Card, CardContent } from '@material-ui/core';
 import StatsCard from './components/StatsCard';
 import Map from './components/Map';
+import Table from './components/Table';
 import './App.css';
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    fetch ("https://disease.sh/v3/covid-19/all")
+      .then(response => response.json())
+      .then(data => {
+        setCountryInfo(data);
+      });
+  }, []);
 
   useEffect(() => {
     const getCountriesData = async () => {
@@ -19,6 +29,7 @@ function App() {
               value: country.countryInfo.iso2
             }));
 
+            setTableData(data);
             setCountries(countries);
         });
     };
@@ -40,8 +51,6 @@ function App() {
       })
   };
 
-  console.log("COUNTRY INFO >>>>>", countryInfo)
-
   return (
     <div className="app">
       <div className="app-left">
@@ -61,15 +70,18 @@ function App() {
           <StatsCard
             title="Coronavirus Cases"
             cases={countryInfo.todayCases} 
-            total={countryInfo.cases}/>
+            total={countryInfo.cases}
+          />
           <StatsCard
             title="Recovered"
             cases={countryInfo.todayRecovered}
-            total={countryInfo.recovered}/>
+            total={countryInfo.recovered}
+          />
           <StatsCard
             title="Deaths"
             cases={countryInfo.todayDeaths}
-            total={countryInfo.deaths}/>
+            total={countryInfo.deaths}
+          />
         </div>
 
         <div className="app-map">
@@ -80,6 +92,7 @@ function App() {
       <Card className="app-right">
         <CardContent>
           <h3>Live Cases by Country</h3>
+          <Table countries={tableData}/>
           <h3>Worldwide New Cases</h3>
         </CardContent>
       </Card>
