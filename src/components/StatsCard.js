@@ -2,9 +2,9 @@ import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import './StatsCard.css';
 
-function StatsCard({ title, cases, total }) {
+function StatsCard({ title, cases, total, ...props }) {
    return (
-      <Card className="stats-card">
+      <Card onClick={props.onClick} className="stats-card">
          <CardContent>
             <Typography className="stats-card-title" color="textSecondary">{title}</Typography>
 
