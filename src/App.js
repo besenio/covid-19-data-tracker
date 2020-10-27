@@ -6,6 +6,7 @@ import Table from './components/Table';
 import Graph from './components/Graph';
 import { sortData } from './util/util';
 import './App.css';
+import 'leaflet/dist/leaflet.css';
 
 function App() {
   const [countries, setCountries] = useState([]);
