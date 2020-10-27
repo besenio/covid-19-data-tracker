@@ -79,18 +79,23 @@ function App() {
 
         <div className="app-stats">
           <StatsCard
+            isRed
+            active={casesType === 'cases'}
             title="Coronavirus Cases"
             cases={prettyPrintStat(countryInfo.todayCases)} 
             total={prettyPrintStat(countryInfo.cases)}
             onClick={e => setCasesType('cases')}
           />
           <StatsCard
+            active={casesType === 'recovered'}
             title="Recovered"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={prettyPrintStat(countryInfo.recovered)}
             onClick={e => setCasesType('recovered')}
           />
           <StatsCard
+            isRed
+            active={casesType === 'deaths'}
             title="Deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={prettyPrintStat(countryInfo.deaths)}
@@ -112,8 +117,8 @@ function App() {
         <CardContent>
           <h3>Live Cases by Country</h3>
           <Table countries={tableData}/>
-          <h3>Worldwide New Cases</h3>
-          <Graph />
+          <h3>Worldwide New {casesType[0].toUpperCase() + casesType.slice(1)}</h3>
+          <Graph casesType={casesType}/>
         </CardContent>
       </Card>
     </div>

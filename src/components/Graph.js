@@ -72,7 +72,7 @@ function Graph({ casesType='cases' }) {
          await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
             .then(response => response.json())
             .then(data => {
-               const chartData = buildChartData(data, 'cases');
+               const chartData = buildChartData(data, casesType);
                setData(chartData);
             });
          }

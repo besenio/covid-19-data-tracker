@@ -1,5 +1,14 @@
 .stats-card {
-   flex: 1
+   flex: 1;
+   cursor: pointer;
+}
+
+.stats-card--selected {
+   border-top: 10px solid yellowgreen;
+}
+
+.stats-card--red {
+   border-color: red;
 }
 
 .stats-card:not(:last-child) {
@@ -11,6 +20,10 @@
    font-weight: 600;
    font-size: 1.75rem;
    margin-bottom: 0.5rem;
+}
+
+.stats-card-cases--green {
+   color: yellowgreen;
 }
 
 .stats-card-total {
