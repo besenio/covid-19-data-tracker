@@ -58,7 +58,7 @@ function App() {
         setCountry(countryCode);
         setCountryInfo(data);
         setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-        setMapZoom(4);
+        setMapZoom(5);
       })
   };
 
@@ -117,8 +117,10 @@ function App() {
         <CardContent>
           <h3>Live Cases by Country</h3>
           <Table countries={tableData}/>
-          <h3>Worldwide New {casesType[0].toUpperCase() + casesType.slice(1)}</h3>
-          <Graph casesType={casesType}/>
+          <h3 className="app-graph-title">
+            Worldwide New {casesType[0].toUpperCase() + casesType.slice(1)}
+          </h3>
+          <Graph className="app-graph" casesType={casesType}/>
         </CardContent>
       </Card>
     </div>

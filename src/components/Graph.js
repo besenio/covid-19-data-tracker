@@ -64,8 +64,15 @@ const buildChartData = (data, casesType='cases') => {
    return chartData
 }
 
-function Graph({ casesType='cases' }) {
+function Graph({ className, casesType='cases' }) {
    const [data, setData] = useState({});
+
+   let changeBackgroudColor;
+   if (casesType === 'recovered') {
+      changeBackgroudColor = 'yellowgreen';
+   } else {
+      changeBackgroudColor = 'rgba(204, 16, 52, 0.5)'
+   }
 
    useEffect(() => {
       const fetchData = async () => {
@@ -80,14 +87,13 @@ function Graph({ casesType='cases' }) {
       }, [casesType]);
 
    return (
-      <div>
-         <h1>Graph</h1>
+      <div className={className}>
          {data?.length > 0 && ( //data && data.length
             <Line
                options={options}
                data={{
                   datasets: [{
-                     backgroundColor: "rgba(204, 16, 52, 0.5)",
+                     backgroundColor: changeBackgroudColor,
                      data: data
                   }]
                }} 
